@@ -49,3 +49,15 @@ export interface Media {
   createdAt: string;
   updatedAt: string;
 }
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "collection-slices".
+ */
+export interface CollectionSlice {
+  id: string;
+  title: string;
+  media: string[] | Media[];
+  _status?: 'draft' | 'published';
+  createdAt: string;
+  updatedAt: string;
+}
