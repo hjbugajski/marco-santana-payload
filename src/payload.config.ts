@@ -1,17 +1,19 @@
-import { buildConfig } from "payload/config";
-import path from "path";
-import Users from "./collections/Users";
+import path from 'path';
+
+import { buildConfig } from 'payload/config';
+
+import Users from './collections/Users';
 
 export default buildConfig({
   admin: {
-    user: Users.slug,
+    user: Users.slug
   },
   collections: [Users],
   typescript: {
-    outputFile: path.resolve(__dirname, "payload-types.ts"),
+    outputFile: path.resolve(__dirname, 'payload-types.ts')
   },
   graphQL: {
-    schemaOutputFile: path.resolve(__dirname, "generated-schema.graphql"),
+    schemaOutputFile: path.resolve(__dirname, 'generated-schema.graphql')
   },
-  cors: [process.env.MONGODB_IP].filter(Boolean),
+  cors: [process.env.MONGODB_IP].filter(Boolean)
 });
