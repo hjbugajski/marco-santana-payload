@@ -38,3 +38,19 @@ export const isAdminOrSelfFieldLevel: FieldAccess<{ id: string }, unknown, User>
 
   return false;
 };
+
+export const isAdminOrEditor: Access = ({ req: { user } }) => {
+  if (!user) {
+    return false;
+  }
+
+  if (user.roles?.includes('editor')) {
+    return true;
+  }
+
+  return {
+    id: {
+      equals: user.id
+    }
+  };
+};
