@@ -51,12 +51,21 @@ export interface Media {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "collection-slices".
+ * via the `definition` "pages".
  */
-export interface CollectionSlice {
+export interface Page {
   id: string;
   title: string;
-  media: string[] | Media[];
+  path: string;
+  layout: {
+    sectionFields: {
+      title?: string;
+      media: string[] | Media[];
+    };
+    id?: string;
+    blockName?: string;
+    blockType: 'photo-sections';
+  }[];
   _status?: 'draft' | 'published';
   createdAt: string;
   updatedAt: string;

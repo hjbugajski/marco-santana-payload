@@ -2,15 +2,15 @@ import path from 'path';
 
 import { buildConfig } from 'payload/config';
 
-import CollectionSlices from './collections/CollectionSlices';
 import Media from './collections/Media';
+import Pages from './collections/Pages';
 import Users from './collections/Users';
 
 export default buildConfig({
   admin: {
     user: Users.slug
   },
-  collections: [Users, Media, CollectionSlices],
+  collections: [Users, Media, Pages],
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts')
   },

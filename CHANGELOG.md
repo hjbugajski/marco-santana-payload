@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+### [0.0.2](https://github.com/marco-santana/payload-cms/compare/v0.0.1...v0.0.2) (2022-11-18)
+
+### Features
+
+- add Pages collection and PhotoSection block ([052fbbb](https://github.com/marco-santana/payload-cms/commit/052fbbba1d09725c1dfec3e80770c7106e0c1517))
+
 ### 0.0.1 (2022-11-16)
 
 ### Features
