@@ -2,7 +2,7 @@ import path from 'path';
 
 import { CollectionConfig } from 'payload/types';
 
-import { isAdminOrEditor } from '../utils/access';
+import { isAdminOrEditor } from '../access';
 
 const Media: CollectionConfig = {
   slug: 'media',

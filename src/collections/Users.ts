@@ -1,12 +1,13 @@
 import { CollectionConfig } from 'payload/types';
 
-import { isAdminFieldLevel, isAdminOrSelf, isAdminOrSelfFieldLevel } from '../utils/access';
+import { isAdminFieldLevel, isAdminOrSelf, isAdminOrSelfFieldLevel } from '../access';
 
 const Users: CollectionConfig = {
   slug: 'users',
   auth: true,
   admin: {
-    useAsTitle: 'email'
+    useAsTitle: 'email',
+    group: 'Admin'
   },
   access: {
     create: () => true,
