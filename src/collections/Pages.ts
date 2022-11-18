@@ -1,9 +1,10 @@
 import { CollectionConfig } from 'payload/types';
 
-import { isAdminOrEditor } from '../utils/access';
+import { isAdminOrEditor } from '../access';
+import PhotoSection from '../blocks/PhotoSection';
 
-const CollectionSlices: CollectionConfig = {
-  slug: 'collection-slices',
+const Pages: CollectionConfig = {
+  slug: 'pages',
   versions: {
     drafts: true
   },
@@ -21,14 +22,18 @@ const CollectionSlices: CollectionConfig = {
       required: true
     },
     {
-      name: 'media',
-      label: 'Media',
-      type: 'relationship',
-      relationTo: 'media',
-      hasMany: true,
+      name: 'path',
+      label: 'Path',
+      type: 'text',
       required: true
+    },
+    {
+      name: 'layout',
+      type: 'blocks',
+      required: true,
+      blocks: [PhotoSection]
     }
   ]
 };
 
-export default CollectionSlices;
+export default Pages;
