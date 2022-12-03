@@ -93,6 +93,14 @@ export interface Media {
   width?: number;
   height?: number;
   sizes: {
+    preview: {
+      url?: string;
+      width?: number;
+      height?: number;
+      mimeType?: string;
+      filesize?: number;
+      filename?: string;
+    };
     thumbnail: {
       url?: string;
       width?: number;
