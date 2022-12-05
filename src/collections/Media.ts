@@ -22,6 +22,10 @@ const Media: CollectionConfig = {
     mimeTypes: ['image/*'],
     imageSizes: [
       {
+        name: 'preview',
+        height: 2000
+      },
+      {
         name: 'thumbnail',
         width: 480,
         height: 320

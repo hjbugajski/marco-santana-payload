@@ -8,18 +8,74 @@
 export interface Config {}
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "users".
+ * via the `definition` "nav-menu".
  */
-export interface User {
+export interface NavMenu {
   id: string;
-  firstName?: string;
-  lastName?: string;
-  roles: ('admin' | 'editor' | 'public')[];
-  email?: string;
-  resetPasswordToken?: string;
-  resetPasswordExpiration?: string;
-  loginAttempts?: number;
-  lockUntil?: string;
+  navItems: {
+    type: 'reference' | 'external';
+    newTab?: boolean;
+    reference: string | Page;
+    label: string;
+    url: string;
+    id?: string;
+  }[];
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pages".
+ */
+export interface Page {
+  id: string;
+  name: string;
+  slug: string;
+  displayName?: boolean;
+  title: string;
+  layout: (
+    | {
+        homeFields: {
+          subTitle?: string;
+          instagramLinks: {
+            label: string;
+            url: string;
+            instagramMedia: string | Media;
+            id?: string;
+          }[];
+        };
+        id?: string;
+        blockName?: string;
+        blockType: 'home';
+      }
+    | {
+        contentFields: {
+          content?: {
+            [k: string]: unknown;
+          }[];
+        };
+        id?: string;
+        blockName?: string;
+        blockType: 'content';
+      }
+    | {
+        photoSectionFields: {
+          title?: string;
+          showPageLink?: boolean;
+          pageLink: {
+            type: 'reference' | 'external';
+            newTab?: boolean;
+            reference: string | Page;
+            label: string;
+            url: string;
+          };
+          scrollContainer?: boolean;
+          photoSectionMedia: string[] | Media[];
+        };
+        id?: string;
+        blockName?: string;
+        blockType: 'photoSection';
+      }
+  )[];
+  _status?: 'draft' | 'published';
   createdAt: string;
   updatedAt: string;
 }
@@ -37,6 +93,14 @@ export interface Media {
   width?: number;
   height?: number;
   sizes: {
+    preview: {
+      url?: string;
+      width?: number;
+      height?: number;
+      mimeType?: string;
+      filesize?: number;
+      filename?: string;
+    };
     thumbnail: {
       url?: string;
       width?: number;
@@ -51,22 +115,18 @@ export interface Media {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "pages".
+ * via the `definition` "users".
  */
-export interface Page {
+export interface User {
   id: string;
-  title: string;
-  path: string;
-  layout: {
-    sectionFields: {
-      title?: string;
-      media: string[] | Media[];
-    };
-    id?: string;
-    blockName?: string;
-    blockType: 'photo-sections';
-  }[];
-  _status?: 'draft' | 'published';
+  firstName?: string;
+  lastName?: string;
+  roles: ('admin' | 'editor' | 'public')[];
+  email?: string;
+  resetPasswordToken?: string;
+  resetPasswordExpiration?: string;
+  loginAttempts?: number;
+  lockUntil?: string;
   createdAt: string;
   updatedAt: string;
 }
