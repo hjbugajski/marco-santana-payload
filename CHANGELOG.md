@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [1.0.0](https://github.com/hjbugajski/marco-santana-payload-cms/compare/v0.0.2...v1.0.0) (2022-12-05)
+
+### Features
+
+- add Content block ([8774801](https://github.com/hjbugajski/marco-santana-payload-cms/commit/8774801d622fc8426c7bd7ddf918c0d12e95a48c))
+- add Home block ([1394af6](https://github.com/hjbugajski/marco-santana-payload-cms/commit/1394af61a98446c5d3272c0759ef99ad6c7ac44a))
+- add link field ([25e65aa](https://github.com/hjbugajski/marco-santana-payload-cms/commit/25e65aa344f4616f47eedf93a0a112149aca1443))
+- add NavMenu global ([3ce2d17](https://github.com/hjbugajski/marco-santana-payload-cms/commit/3ce2d170a5054492993fd19ee23490ec8c11d61a))
+- add new fields to PhotoSection block ([bfbc6ab](https://github.com/hjbugajski/marco-santana-payload-cms/commit/bfbc6abaeae0f1b0a623fc7b3c25b529656c7776))
+- add preview size to Media ([e2aed08](https://github.com/hjbugajski/marco-santana-payload-cms/commit/e2aed088fa5bce402e430693b053c93b9b050384))
+- update Page collection fields ([2c9a170](https://github.com/hjbugajski/marco-santana-payload-cms/commit/2c9a170845909ed25c0512dcae5d8fe9143f938a))
+- update payload-types ([f5a8831](https://github.com/hjbugajski/marco-santana-payload-cms/commit/f5a88310280c390253b91e0375c872c90adb0d32))
+
 ### [0.0.2](https://github.com/marco-santana/payload-cms/compare/v0.0.1...v0.0.2) (2022-11-18)
 
 ### Features
