@@ -1,13 +1,13 @@
 import { GlobalConfig } from 'payload/types';
 
-import { isAdminOrEditor } from '../access';
+import { hasRole, Role } from '../access';
 import link from '../fields/link';
 
 const NavMenu: GlobalConfig = {
   slug: 'nav-menu',
   access: {
     read: () => true,
-    update: isAdminOrEditor,
+    update: hasRole(Role.Admin),
   },
   fields: [
     {

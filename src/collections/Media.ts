@@ -2,15 +2,15 @@ import path from 'path';
 
 import { CollectionConfig } from 'payload/types';
 
-import { isAdminOrEditor } from '../access';
+import { hasRole, Role } from '../access';
 
 const Media: CollectionConfig = {
   slug: 'media',
   access: {
     read: () => true,
-    create: isAdminOrEditor,
-    update: isAdminOrEditor,
-    delete: isAdminOrEditor,
+    create: hasRole(Role.Admin, Role.Editor),
+    update: hasRole(Role.Admin, Role.Editor),
+    delete: hasRole(Role.Admin, Role.Editor),
   },
   admin: {
     useAsTitle: 'filename',
