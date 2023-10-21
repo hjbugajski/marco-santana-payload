@@ -1,5 +1,5 @@
 {
-  "name": "payload-cms",
+  "name": "marco-santana-payload",
   "description": "Payload CMS for Marco Santana's Portfolio",
   "version": "1.0.3",
   "main": "dist/server.js",

@@ -6,7 +6,7 @@ on:
     types: [opened, reopened, edited]
 
 env:
-  IMAGE_NAME: marco-santana-payload-cms
+  IMAGE_NAME: marco-santana-payload
 
 jobs:
   push:

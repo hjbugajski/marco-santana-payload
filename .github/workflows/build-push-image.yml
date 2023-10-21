@@ -8,7 +8,7 @@ on:
       - v*
 
 env:
-  IMAGE_NAME: marco-santana-payload-cms
+  IMAGE_NAME: marco-santana-payload
 
 jobs:
   push:
