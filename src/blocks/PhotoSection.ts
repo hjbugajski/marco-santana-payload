@@ -12,25 +12,25 @@ const PhotoSection: Block = {
         {
           name: 'title',
           label: 'Title',
-          type: 'text'
+          type: 'text',
         },
         {
           name: 'showPageLink',
           label: 'Page Link',
-          type: 'checkbox'
+          type: 'checkbox',
         },
         {
           name: 'pageLink',
           type: 'group',
           admin: {
-            condition: (data, siblingData) => siblingData?.showPageLink === true
+            condition: (data, siblingData) => siblingData?.showPageLink === true,
           },
-          fields: [link]
+          fields: [link],
         },
         {
           name: 'scrollContainer',
           label: 'Scroll container',
-          type: 'checkbox'
+          type: 'checkbox',
         },
         {
           name: 'photoSectionMedia',
@@ -38,11 +38,11 @@ const PhotoSection: Block = {
           type: 'relationship',
           relationTo: 'media',
           hasMany: true,
-          required: true
-        }
-      ]
-    })
-  ]
+          required: true,
+        },
+      ],
+    }),
+  ],
 };
 
 export default PhotoSection;

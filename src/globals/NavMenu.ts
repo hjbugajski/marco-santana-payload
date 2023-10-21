@@ -7,15 +7,15 @@ const NavMenu: GlobalConfig = {
   slug: 'nav-menu',
   access: {
     read: () => true,
-    update: isAdminOrEditor
+    update: isAdminOrEditor,
   },
   fields: [
     {
       name: 'navItems',
       type: 'array',
-      fields: [link]
-    }
-  ]
+      fields: [link],
+    },
+  ],
 };
 
 export default NavMenu;

@@ -9,19 +9,19 @@ const link: Field = {
       options: [
         {
           label: 'Internal link',
-          value: 'reference'
+          value: 'reference',
         },
         {
           label: 'External link',
-          value: 'external'
-        }
+          value: 'external',
+        },
       ],
       defaultValue: 'reference',
       admin: {
         layout: 'horizontal',
-        width: '50%'
+        width: '50%',
       },
-      required: true
+      required: true,
     },
     {
       name: 'newTab',
@@ -30,9 +30,9 @@ const link: Field = {
       admin: {
         width: '50%',
         style: {
-          alignSelf: 'flex-end'
-        }
-      }
+          alignSelf: 'flex-end',
+        },
+      },
     },
     {
       name: 'reference',
@@ -42,8 +42,8 @@ const link: Field = {
       required: true,
       maxDepth: 1,
       admin: {
-        condition: (_, siblingData) => siblingData?.type === 'reference'
-      }
+        condition: (_, siblingData) => siblingData?.type === 'reference',
+      },
     },
     {
       name: 'label',
@@ -51,8 +51,8 @@ const link: Field = {
       type: 'text',
       required: true,
       admin: {
-        condition: (_, siblingData) => siblingData?.type === 'external'
-      }
+        condition: (_, siblingData) => siblingData?.type === 'external',
+      },
     },
     {
       name: 'url',
@@ -60,10 +60,10 @@ const link: Field = {
       type: 'text',
       required: true,
       admin: {
-        condition: (_, siblingData) => siblingData?.type === 'external'
-      }
-    }
-  ]
+        condition: (_, siblingData) => siblingData?.type === 'external',
+      },
+    },
+  ],
 };
 
 export default link;

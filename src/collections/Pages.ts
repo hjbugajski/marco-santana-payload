@@ -9,34 +9,34 @@ const Pages: CollectionConfig = {
   slug: 'pages',
   admin: {
     useAsTitle: 'name',
-    defaultColumns: ['name', 'slug', 'createdAt', 'updatedAt']
+    defaultColumns: ['name', 'slug', 'createdAt', 'updatedAt'],
   },
   versions: {
-    drafts: true
+    drafts: true,
   },
   access: {
     read: () => true,
     create: isAdminOrEditor,
     update: isAdminOrEditor,
-    delete: isAdminOrEditor
+    delete: isAdminOrEditor,
   },
   fields: [
     {
       name: 'name',
       label: 'Name',
       type: 'text',
-      required: true
+      required: true,
     },
     {
       name: 'slug',
       label: 'Slug',
       type: 'text',
-      required: true
+      required: true,
     },
     {
       name: 'displayName',
       label: 'Display name',
-      type: 'checkbox'
+      type: 'checkbox',
     },
     {
       type: 'tabs',
@@ -48,9 +48,9 @@ const Pages: CollectionConfig = {
               name: 'title',
               label: 'Title',
               type: 'text',
-              required: true
-            }
-          ]
+              required: true,
+            },
+          ],
         },
         {
           label: 'Content',
@@ -59,13 +59,13 @@ const Pages: CollectionConfig = {
               name: 'layout',
               type: 'blocks',
               required: true,
-              blocks: [Home, Content, PhotoSection]
-            }
-          ]
-        }
-      ]
-    }
-  ]
+              blocks: [Home, Content, PhotoSection],
+            },
+          ],
+        },
+      ],
+    },
+  ],
 };
 
 export default Pages;

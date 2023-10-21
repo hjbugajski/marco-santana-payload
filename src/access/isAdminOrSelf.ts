@@ -13,8 +13,8 @@ export const isAdminOrSelf: Access = ({ req: { user } }) => {
 
   return {
     id: {
-      equals: user.id
-    }
+      equals: user.id,
+    },
   };
 };
 

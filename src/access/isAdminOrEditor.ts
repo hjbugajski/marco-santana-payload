@@ -11,7 +11,7 @@ export const isAdminOrEditor: Access = ({ req: { user } }) => {
 
   return {
     id: {
-      equals: user.id
-    }
+      equals: user.id,
+    },
   };
 };

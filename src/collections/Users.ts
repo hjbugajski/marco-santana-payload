@@ -7,13 +7,13 @@ const Users: CollectionConfig = {
   auth: true,
   admin: {
     useAsTitle: 'email',
-    group: 'Admin'
+    group: 'Admin',
   },
   access: {
     create: isAdmin,
     read: isAdminOrSelf,
     update: isAdminOrSelf,
-    delete: isAdmin
+    delete: isAdmin,
   },
   fields: [
     {
@@ -22,14 +22,14 @@ const Users: CollectionConfig = {
         {
           name: 'firstName',
           type: 'text',
-          required: false
+          required: false,
         },
         {
           name: 'lastName',
           type: 'text',
-          required: false
-        }
-      ]
+          required: false,
+        },
+      ],
     },
     {
       name: 'roles',
@@ -40,11 +40,11 @@ const Users: CollectionConfig = {
       access: {
         read: isAdminOrSelfFieldLevel,
         create: isAdminFieldLevel,
-        update: isAdminFieldLevel
+        update: isAdminFieldLevel,
       },
-      options: ['admin', 'editor', 'public']
-    }
-  ]
+      options: ['admin', 'editor', 'public'],
+    },
+  ],
 };
 
 export default Users;

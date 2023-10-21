@@ -11,7 +11,7 @@ const Home: Block = {
         {
           name: 'subTitle',
           label: 'Sub-Title',
-          type: 'text'
+          type: 'text',
         },
         {
           type: 'array',
@@ -25,28 +25,28 @@ const Home: Block = {
                   name: 'label',
                   label: 'Label',
                   type: 'text',
-                  required: true
+                  required: true,
                 },
                 {
                   name: 'url',
                   label: 'URL',
                   type: 'text',
-                  required: true
-                }
-              ]
+                  required: true,
+                },
+              ],
             },
             {
               name: 'instagramMedia',
               label: 'Media',
               type: 'relationship',
               relationTo: 'media',
-              required: true
-            }
-          ]
-        }
-      ]
-    })
-  ]
+              required: true,
+            },
+          ],
+        },
+      ],
+    }),
+  ],
 };
 
 export default Home;

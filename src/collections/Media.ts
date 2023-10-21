@@ -10,11 +10,11 @@ const Media: CollectionConfig = {
     read: () => true,
     create: isAdminOrEditor,
     update: isAdminOrEditor,
-    delete: isAdminOrEditor
+    delete: isAdminOrEditor,
   },
   admin: {
     useAsTitle: 'filename',
-    group: 'Content'
+    group: 'Content',
   },
   upload: {
     adminThumbnail: 'thumbnail',
@@ -23,14 +23,14 @@ const Media: CollectionConfig = {
     imageSizes: [
       {
         name: 'preview',
-        height: 2000
+        height: 2000,
       },
       {
         name: 'thumbnail',
         width: 480,
-        height: 320
-      }
-    ]
+        height: 320,
+      },
+    ],
   },
   fields: [
     {
@@ -38,9 +38,9 @@ const Media: CollectionConfig = {
       label: 'Alt Text',
       localized: true,
       type: 'text',
-      required: true
-    }
-  ]
+      required: true,
+    },
+  ],
 };
 
 export default Media;
