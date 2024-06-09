@@ -1,15 +1,40 @@
-import { CollectionConfig } from 'payload/types';
+import {
+  AlignFeature,
+  BlocksFeature,
+  BoldTextFeature,
+  HeadingFeature,
+  ItalicTextFeature,
+  lexicalEditor,
+  LinkFeature,
+  OrderedListFeature,
+  ParagraphFeature,
+  StrikethroughTextFeature,
+  SubscriptTextFeature,
+  SuperscriptTextFeature,
+  UnderlineTextFeature,
+  UnorderedListFeature,
+} from '@payloadcms/richtext-lexical';
+import { CollectionConfig, FieldHook } from 'payload/types';
 
 import { hasRole, hasRoleOrPublished, Role } from '../access';
-import Content from '../blocks/Content';
-import Home from '../blocks/Home';
-import PhotoSection from '../blocks/PhotoSection';
+import Gallery from '../blocks/Gallery';
+import Hero from '../blocks/Hero';
+import Section from '../blocks/Section';
+import RowLabel from '../components/RowLabel';
+import { richTextFields } from '../fields/link';
+import { slugify } from '../utils/slugify';
+
+const useSlug: FieldHook = ({ operation, siblingData }) => {
+  if (operation === 'create' || operation === 'update') {
+    return slugify(siblingData?.title);
+  }
+};
 
 const Pages: CollectionConfig = {
   slug: 'pages',
   admin: {
-    useAsTitle: 'name',
-    defaultColumns: ['name', 'slug', 'createdAt', 'updatedAt'],
+    useAsTitle: 'title',
+    defaultColumns: ['title', 'slug', '_status', 'updatedAt'],
   },
   versions: {
     drafts: true,
@@ -22,46 +47,80 @@ const Pages: CollectionConfig = {
   },
   fields: [
     {
-      name: 'name',
-      label: 'Name',
-      type: 'text',
-      required: true,
-    },
-    {
       name: 'slug',
-      label: 'Slug',
+      type: 'text',
+      admin: {
+        position: 'sidebar',
+      },
+      hooks: {
+        beforeValidate: [useSlug],
+      },
+    },
+    {
+      name: 'title',
       type: 'text',
       required: true,
     },
     {
-      name: 'displayName',
-      label: 'Display name',
-      type: 'checkbox',
+      name: 'description',
+      type: 'textarea',
+      required: true,
     },
     {
-      type: 'tabs',
-      tabs: [
+      name: 'content',
+      type: 'richText',
+      editor: lexicalEditor({
+        features: [
+          HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3'] }),
+          ParagraphFeature(),
+          BoldTextFeature(),
+          ItalicTextFeature(),
+          UnderlineTextFeature(),
+          StrikethroughTextFeature(),
+          UnorderedListFeature(),
+          OrderedListFeature(),
+          SuperscriptTextFeature(),
+          SubscriptTextFeature(),
+          AlignFeature(),
+          LinkFeature({ fields: richTextFields }),
+          BlocksFeature({ blocks: [Hero, Section, Gallery] }),
+        ],
+      }),
+    },
+    {
+      name: 'parent',
+      type: 'relationship',
+      relationTo: 'pages',
+      admin: {
+        position: 'sidebar',
+      },
+      filterOptions: ({ siblingData }) => ({
+        slug: {
+          // @ts-expect-error – valid field
+          not_equals: siblingData?.slug,
+        },
+      }),
+    },
+    {
+      name: 'breadcrumbs',
+      type: 'array',
+      admin: {
+        hidden: true,
+        position: 'sidebar',
+        readOnly: true,
+        components: {
+          RowLabel: RowLabel('label', 'Breadcrumb'),
+        },
+      },
+      fields: [
         {
-          label: 'Head',
-          fields: [
-            {
-              name: 'title',
-              label: 'Title',
-              type: 'text',
-              required: true,
-            },
-          ],
+          name: 'url',
+          label: 'Path',
+          type: 'text',
         },
         {
-          label: 'Content',
-          fields: [
-            {
-              name: 'layout',
-              type: 'blocks',
-              required: true,
-              blocks: [Home, Content, PhotoSection],
-            },
-          ],
+          name: 'label',
+          type: 'text',
         },
       ],
     },

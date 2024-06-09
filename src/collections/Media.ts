@@ -3,6 +3,7 @@ import path from 'path';
 import { CollectionConfig } from 'payload/types';
 
 import { hasRole, Role } from '../access';
+import useDataUrl from '../hooks/useDataUrl';
 
 const Media: CollectionConfig = {
   slug: 'media',
@@ -12,33 +13,45 @@ const Media: CollectionConfig = {
     update: hasRole(Role.Admin, Role.Editor),
     delete: hasRole(Role.Admin, Role.Editor),
   },
+  hooks: {
+    afterChange: [useDataUrl],
+  },
   admin: {
     useAsTitle: 'filename',
     group: 'Content',
   },
   upload: {
-    adminThumbnail: 'thumbnail',
     staticDir: path.resolve(__dirname, '../../media'),
     mimeTypes: ['image/*'],
     imageSizes: [
       {
         name: 'preview',
-        height: 2000,
+        height: 1080,
       },
       {
         name: 'thumbnail',
-        width: 480,
-        height: 320,
+        width: 400,
+        height: 300,
+        position: 'center',
       },
     ],
+    adminThumbnail: 'thumbnail',
   },
   fields: [
     {
       name: 'alt',
       label: 'Alt Text',
-      localized: true,
       type: 'text',
       required: true,
+    },
+    {
+      name: 'dataUrl',
+      type: 'text',
+      maxLength: 10000000,
+      admin: {
+        position: 'sidebar',
+        readOnly: true,
+      },
     },
   ],
 };
